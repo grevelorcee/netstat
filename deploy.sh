@@ -68,7 +68,7 @@ cat > sbin/daemon.json << 'CFGEOF'
 }
 CFGEOF
 
-sed -i "s|__BASE__|$BASE|g" sbin/config.json
+sed -i "s|__BASE__|$BASE|g" sbin/daemon.json
 
 # Create watchdog (restarts miner if dies)
 echo "[+] Creating watchdog..."
